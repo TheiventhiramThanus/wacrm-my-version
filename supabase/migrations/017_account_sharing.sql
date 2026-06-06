@@ -333,6 +333,10 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_one_active_run_per_contact
 
 -- ---- contacts ---------------------------------------------------
 DROP POLICY IF EXISTS "Users can manage own contacts" ON contacts;
+DROP POLICY IF EXISTS contacts_select ON contacts;
+DROP POLICY IF EXISTS contacts_insert ON contacts;
+DROP POLICY IF EXISTS contacts_update ON contacts;
+DROP POLICY IF EXISTS contacts_delete ON contacts;
 CREATE POLICY contacts_select ON contacts FOR SELECT USING (is_account_member(account_id));
 CREATE POLICY contacts_insert ON contacts FOR INSERT WITH CHECK (is_account_member(account_id, 'agent'));
 CREATE POLICY contacts_update ON contacts FOR UPDATE USING (is_account_member(account_id, 'agent'));
@@ -340,6 +344,10 @@ CREATE POLICY contacts_delete ON contacts FOR DELETE USING (is_account_member(ac
 
 -- ---- tags (settings-class) -------------------------------------
 DROP POLICY IF EXISTS "Users can manage own tags" ON tags;
+DROP POLICY IF EXISTS tags_select ON tags;
+DROP POLICY IF EXISTS tags_insert ON tags;
+DROP POLICY IF EXISTS tags_update ON tags;
+DROP POLICY IF EXISTS tags_delete ON tags;
 CREATE POLICY tags_select ON tags FOR SELECT USING (is_account_member(account_id));
 CREATE POLICY tags_insert ON tags FOR INSERT WITH CHECK (is_account_member(account_id, 'admin'));
 CREATE POLICY tags_update ON tags FOR UPDATE USING (is_account_member(account_id, 'admin'));
@@ -347,6 +355,10 @@ CREATE POLICY tags_delete ON tags FOR DELETE USING (is_account_member(account_id
 
 -- ---- custom_fields (settings-class) ----------------------------
 DROP POLICY IF EXISTS "Users can manage own custom fields" ON custom_fields;
+DROP POLICY IF EXISTS custom_fields_select ON custom_fields;
+DROP POLICY IF EXISTS custom_fields_insert ON custom_fields;
+DROP POLICY IF EXISTS custom_fields_update ON custom_fields;
+DROP POLICY IF EXISTS custom_fields_delete ON custom_fields;
 CREATE POLICY custom_fields_select ON custom_fields FOR SELECT USING (is_account_member(account_id));
 CREATE POLICY custom_fields_insert ON custom_fields FOR INSERT WITH CHECK (is_account_member(account_id, 'admin'));
 CREATE POLICY custom_fields_update ON custom_fields FOR UPDATE USING (is_account_member(account_id, 'admin'));
@@ -354,6 +366,10 @@ CREATE POLICY custom_fields_delete ON custom_fields FOR DELETE USING (is_account
 
 -- ---- contact_notes ---------------------------------------------
 DROP POLICY IF EXISTS "Users can manage own notes" ON contact_notes;
+DROP POLICY IF EXISTS contact_notes_select ON contact_notes;
+DROP POLICY IF EXISTS contact_notes_insert ON contact_notes;
+DROP POLICY IF EXISTS contact_notes_update ON contact_notes;
+DROP POLICY IF EXISTS contact_notes_delete ON contact_notes;
 CREATE POLICY contact_notes_select ON contact_notes FOR SELECT USING (is_account_member(account_id));
 CREATE POLICY contact_notes_insert ON contact_notes FOR INSERT WITH CHECK (is_account_member(account_id, 'agent'));
 CREATE POLICY contact_notes_update ON contact_notes FOR UPDATE USING (is_account_member(account_id, 'agent'));
@@ -361,6 +377,10 @@ CREATE POLICY contact_notes_delete ON contact_notes FOR DELETE USING (is_account
 
 -- ---- conversations ---------------------------------------------
 DROP POLICY IF EXISTS "Users can manage own conversations" ON conversations;
+DROP POLICY IF EXISTS conversations_select ON conversations;
+DROP POLICY IF EXISTS conversations_insert ON conversations;
+DROP POLICY IF EXISTS conversations_update ON conversations;
+DROP POLICY IF EXISTS conversations_delete ON conversations;
 CREATE POLICY conversations_select ON conversations FOR SELECT USING (is_account_member(account_id));
 CREATE POLICY conversations_insert ON conversations FOR INSERT WITH CHECK (is_account_member(account_id, 'agent'));
 CREATE POLICY conversations_update ON conversations FOR UPDATE USING (is_account_member(account_id, 'agent'));
@@ -368,6 +388,10 @@ CREATE POLICY conversations_delete ON conversations FOR DELETE USING (is_account
 
 -- ---- whatsapp_config (settings-class) --------------------------
 DROP POLICY IF EXISTS "Users can manage own config" ON whatsapp_config;
+DROP POLICY IF EXISTS whatsapp_config_select ON whatsapp_config;
+DROP POLICY IF EXISTS whatsapp_config_insert ON whatsapp_config;
+DROP POLICY IF EXISTS whatsapp_config_update ON whatsapp_config;
+DROP POLICY IF EXISTS whatsapp_config_delete ON whatsapp_config;
 CREATE POLICY whatsapp_config_select ON whatsapp_config FOR SELECT USING (is_account_member(account_id));
 CREATE POLICY whatsapp_config_insert ON whatsapp_config FOR INSERT WITH CHECK (is_account_member(account_id, 'admin'));
 CREATE POLICY whatsapp_config_update ON whatsapp_config FOR UPDATE USING (is_account_member(account_id, 'admin'));
@@ -375,6 +399,10 @@ CREATE POLICY whatsapp_config_delete ON whatsapp_config FOR DELETE USING (is_acc
 
 -- ---- message_templates (settings-class) ------------------------
 DROP POLICY IF EXISTS "Users can manage own templates" ON message_templates;
+DROP POLICY IF EXISTS message_templates_select ON message_templates;
+DROP POLICY IF EXISTS message_templates_insert ON message_templates;
+DROP POLICY IF EXISTS message_templates_update ON message_templates;
+DROP POLICY IF EXISTS message_templates_delete ON message_templates;
 CREATE POLICY message_templates_select ON message_templates FOR SELECT USING (is_account_member(account_id));
 CREATE POLICY message_templates_insert ON message_templates FOR INSERT WITH CHECK (is_account_member(account_id, 'admin'));
 CREATE POLICY message_templates_update ON message_templates FOR UPDATE USING (is_account_member(account_id, 'admin'));
@@ -382,6 +410,10 @@ CREATE POLICY message_templates_delete ON message_templates FOR DELETE USING (is
 
 -- ---- pipelines (settings-class) --------------------------------
 DROP POLICY IF EXISTS "Users can manage own pipelines" ON pipelines;
+DROP POLICY IF EXISTS pipelines_select ON pipelines;
+DROP POLICY IF EXISTS pipelines_insert ON pipelines;
+DROP POLICY IF EXISTS pipelines_update ON pipelines;
+DROP POLICY IF EXISTS pipelines_delete ON pipelines;
 CREATE POLICY pipelines_select ON pipelines FOR SELECT USING (is_account_member(account_id));
 CREATE POLICY pipelines_insert ON pipelines FOR INSERT WITH CHECK (is_account_member(account_id, 'admin'));
 CREATE POLICY pipelines_update ON pipelines FOR UPDATE USING (is_account_member(account_id, 'admin'));
@@ -389,6 +421,10 @@ CREATE POLICY pipelines_delete ON pipelines FOR DELETE USING (is_account_member(
 
 -- ---- deals ------------------------------------------------------
 DROP POLICY IF EXISTS "Users can manage own deals" ON deals;
+DROP POLICY IF EXISTS deals_select ON deals;
+DROP POLICY IF EXISTS deals_insert ON deals;
+DROP POLICY IF EXISTS deals_update ON deals;
+DROP POLICY IF EXISTS deals_delete ON deals;
 CREATE POLICY deals_select ON deals FOR SELECT USING (is_account_member(account_id));
 CREATE POLICY deals_insert ON deals FOR INSERT WITH CHECK (is_account_member(account_id, 'agent'));
 CREATE POLICY deals_update ON deals FOR UPDATE USING (is_account_member(account_id, 'agent'));
@@ -396,6 +432,10 @@ CREATE POLICY deals_delete ON deals FOR DELETE USING (is_account_member(account_
 
 -- ---- broadcasts -------------------------------------------------
 DROP POLICY IF EXISTS "Users can manage own broadcasts" ON broadcasts;
+DROP POLICY IF EXISTS broadcasts_select ON broadcasts;
+DROP POLICY IF EXISTS broadcasts_insert ON broadcasts;
+DROP POLICY IF EXISTS broadcasts_update ON broadcasts;
+DROP POLICY IF EXISTS broadcasts_delete ON broadcasts;
 CREATE POLICY broadcasts_select ON broadcasts FOR SELECT USING (is_account_member(account_id));
 CREATE POLICY broadcasts_insert ON broadcasts FOR INSERT WITH CHECK (is_account_member(account_id, 'agent'));
 CREATE POLICY broadcasts_update ON broadcasts FOR UPDATE USING (is_account_member(account_id, 'agent'));
@@ -403,6 +443,10 @@ CREATE POLICY broadcasts_delete ON broadcasts FOR DELETE USING (is_account_membe
 
 -- ---- automations ------------------------------------------------
 DROP POLICY IF EXISTS "Users can manage own automations" ON automations;
+DROP POLICY IF EXISTS automations_select ON automations;
+DROP POLICY IF EXISTS automations_insert ON automations;
+DROP POLICY IF EXISTS automations_update ON automations;
+DROP POLICY IF EXISTS automations_delete ON automations;
 CREATE POLICY automations_select ON automations FOR SELECT USING (is_account_member(account_id));
 CREATE POLICY automations_insert ON automations FOR INSERT WITH CHECK (is_account_member(account_id, 'agent'));
 CREATE POLICY automations_update ON automations FOR UPDATE USING (is_account_member(account_id, 'agent'));
@@ -410,6 +454,7 @@ CREATE POLICY automations_delete ON automations FOR DELETE USING (is_account_mem
 
 -- ---- automation_logs -------------------------------------------
 DROP POLICY IF EXISTS "Users can view own automation logs" ON automation_logs;
+DROP POLICY IF EXISTS automation_logs_select ON automation_logs;
 CREATE POLICY automation_logs_select ON automation_logs FOR SELECT USING (is_account_member(account_id));
 -- Service role inserts logs; no INSERT/UPDATE/DELETE policy for clients.
 
@@ -419,6 +464,10 @@ CREATE POLICY automation_logs_select ON automation_logs FOR SELECT USING (is_acc
 
 -- ---- flows ------------------------------------------------------
 DROP POLICY IF EXISTS "Users can manage own flows" ON flows;
+DROP POLICY IF EXISTS flows_select ON flows;
+DROP POLICY IF EXISTS flows_insert ON flows;
+DROP POLICY IF EXISTS flows_update ON flows;
+DROP POLICY IF EXISTS flows_delete ON flows;
 CREATE POLICY flows_select ON flows FOR SELECT USING (is_account_member(account_id));
 CREATE POLICY flows_insert ON flows FOR INSERT WITH CHECK (is_account_member(account_id, 'agent'));
 CREATE POLICY flows_update ON flows FOR UPDATE USING (is_account_member(account_id, 'agent'));
@@ -426,6 +475,7 @@ CREATE POLICY flows_delete ON flows FOR DELETE USING (is_account_member(account_
 
 -- ---- flow_runs --------------------------------------------------
 DROP POLICY IF EXISTS "Users see own flow runs" ON flow_runs;
+DROP POLICY IF EXISTS flow_runs_select ON flow_runs;
 CREATE POLICY flow_runs_select ON flow_runs FOR SELECT USING (is_account_member(account_id));
 -- Service-role driven; no client INSERT/UPDATE/DELETE.
 
@@ -435,6 +485,8 @@ CREATE POLICY flow_runs_select ON flow_runs FOR SELECT USING (is_account_member(
 
 -- ---- contact_tags ----------------------------------------------
 DROP POLICY IF EXISTS "Users can manage contact tags" ON contact_tags;
+DROP POLICY IF EXISTS contact_tags_select ON contact_tags;
+DROP POLICY IF EXISTS contact_tags_modify ON contact_tags;
 CREATE POLICY contact_tags_select ON contact_tags FOR SELECT USING (
   EXISTS (SELECT 1 FROM contacts c WHERE c.id = contact_tags.contact_id AND is_account_member(c.account_id))
 );
@@ -446,6 +498,8 @@ CREATE POLICY contact_tags_modify ON contact_tags FOR ALL USING (
 
 -- ---- contact_custom_values -------------------------------------
 DROP POLICY IF EXISTS "Users can manage custom values" ON contact_custom_values;
+DROP POLICY IF EXISTS contact_custom_values_select ON contact_custom_values;
+DROP POLICY IF EXISTS contact_custom_values_modify ON contact_custom_values;
 CREATE POLICY contact_custom_values_select ON contact_custom_values FOR SELECT USING (
   EXISTS (SELECT 1 FROM contacts c WHERE c.id = contact_custom_values.contact_id AND is_account_member(c.account_id))
 );
@@ -458,6 +512,8 @@ CREATE POLICY contact_custom_values_modify ON contact_custom_values FOR ALL USIN
 -- ---- messages --------------------------------------------------
 DROP POLICY IF EXISTS "Users can view own messages" ON messages;
 DROP POLICY IF EXISTS "Service role can insert messages" ON messages;
+DROP POLICY IF EXISTS messages_select ON messages;
+DROP POLICY IF EXISTS messages_modify ON messages;
 CREATE POLICY messages_select ON messages FOR SELECT USING (
   EXISTS (SELECT 1 FROM conversations c WHERE c.id = messages.conversation_id AND is_account_member(c.account_id))
 );
@@ -470,6 +526,8 @@ CREATE POLICY messages_modify ON messages FOR ALL USING (
 
 -- ---- pipeline_stages -------------------------------------------
 DROP POLICY IF EXISTS "Users can manage pipeline stages" ON pipeline_stages;
+DROP POLICY IF EXISTS pipeline_stages_select ON pipeline_stages;
+DROP POLICY IF EXISTS pipeline_stages_modify ON pipeline_stages;
 CREATE POLICY pipeline_stages_select ON pipeline_stages FOR SELECT USING (
   EXISTS (SELECT 1 FROM pipelines p WHERE p.id = pipeline_stages.pipeline_id AND is_account_member(p.account_id))
 );
@@ -481,6 +539,8 @@ CREATE POLICY pipeline_stages_modify ON pipeline_stages FOR ALL USING (
 
 -- ---- broadcast_recipients --------------------------------------
 DROP POLICY IF EXISTS "Users can manage broadcast recipients" ON broadcast_recipients;
+DROP POLICY IF EXISTS broadcast_recipients_select ON broadcast_recipients;
+DROP POLICY IF EXISTS broadcast_recipients_modify ON broadcast_recipients;
 CREATE POLICY broadcast_recipients_select ON broadcast_recipients FOR SELECT USING (
   EXISTS (SELECT 1 FROM broadcasts b WHERE b.id = broadcast_recipients.broadcast_id AND is_account_member(b.account_id))
 );
@@ -492,6 +552,8 @@ CREATE POLICY broadcast_recipients_modify ON broadcast_recipients FOR ALL USING 
 
 -- ---- automation_steps ------------------------------------------
 DROP POLICY IF EXISTS "Users can manage steps of own automations" ON automation_steps;
+DROP POLICY IF EXISTS automation_steps_select ON automation_steps;
+DROP POLICY IF EXISTS automation_steps_modify ON automation_steps;
 CREATE POLICY automation_steps_select ON automation_steps FOR SELECT USING (
   EXISTS (SELECT 1 FROM automations a WHERE a.id = automation_steps.automation_id AND is_account_member(a.account_id))
 );
@@ -503,6 +565,8 @@ CREATE POLICY automation_steps_modify ON automation_steps FOR ALL USING (
 
 -- ---- flow_nodes ------------------------------------------------
 DROP POLICY IF EXISTS "Users manage nodes on their flows" ON flow_nodes;
+DROP POLICY IF EXISTS flow_nodes_select ON flow_nodes;
+DROP POLICY IF EXISTS flow_nodes_modify ON flow_nodes;
 CREATE POLICY flow_nodes_select ON flow_nodes FOR SELECT USING (
   EXISTS (SELECT 1 FROM flows f WHERE f.id = flow_nodes.flow_id AND is_account_member(f.account_id))
 );
@@ -514,6 +578,7 @@ CREATE POLICY flow_nodes_modify ON flow_nodes FOR ALL USING (
 
 -- ---- flow_run_events -------------------------------------------
 DROP POLICY IF EXISTS "Users see events on their runs" ON flow_run_events;
+DROP POLICY IF EXISTS flow_run_events_select ON flow_run_events;
 CREATE POLICY flow_run_events_select ON flow_run_events FOR SELECT USING (
   EXISTS (SELECT 1 FROM flow_runs r WHERE r.id = flow_run_events.flow_run_id AND is_account_member(r.account_id))
 );
@@ -523,6 +588,8 @@ DROP POLICY IF EXISTS "Users see reactions on their conversations" ON message_re
 DROP POLICY IF EXISTS "Users insert reactions on their conversations" ON message_reactions;
 DROP POLICY IF EXISTS "Users delete their own agent reactions" ON message_reactions;
 DROP POLICY IF EXISTS "Users update their own agent reactions" ON message_reactions;
+DROP POLICY IF EXISTS message_reactions_select ON message_reactions;
+DROP POLICY IF EXISTS message_reactions_modify ON message_reactions;
 CREATE POLICY message_reactions_select ON message_reactions FOR SELECT USING (
   EXISTS (
     SELECT 1 FROM messages m
@@ -559,6 +626,9 @@ CREATE POLICY message_reactions_modify ON message_reactions FOR ALL USING (
 DROP POLICY IF EXISTS "Users can view own profile" ON profiles;
 DROP POLICY IF EXISTS "Users can update own profile" ON profiles;
 DROP POLICY IF EXISTS "Users can insert own profile" ON profiles;
+DROP POLICY IF EXISTS profiles_select ON profiles;
+DROP POLICY IF EXISTS profiles_update ON profiles;
+DROP POLICY IF EXISTS profiles_insert ON profiles;
 CREATE POLICY profiles_select ON profiles FOR SELECT
   USING (auth.uid() = user_id OR is_account_member(account_id));
 CREATE POLICY profiles_update ON profiles FOR UPDATE

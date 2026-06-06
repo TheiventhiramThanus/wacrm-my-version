@@ -155,19 +155,20 @@ export function WhatsAppConfig() {
     }
   }, [supabase]);
 
+  const [hasFetched, setHasFetched] = useState(false);
+
   useEffect(() => {
     // Need both the auth session (`!authLoading`) AND the profile
-    // (`!profileLoading`, which carries `accountId`). Without the
-    // second guard, the effect would fire with `accountId === null`
-    // for the first render window and bail without ever retrying
-    // once the profile arrives.
+    // (`!profileLoading`, which carries `accountId`).
     if (authLoading || profileLoading) return;
     if (!user || !accountId) {
       setLoading(false);
       return;
     }
-    fetchConfig(accountId);
-  }, [authLoading, profileLoading, user, accountId, fetchConfig]);
+    if (hasFetched) return; // Prevent re-fetching and wiping form state on window focus
+
+    fetchConfig(accountId).then(() => setHasFetched(true));
+  }, [authLoading, profileLoading, user, accountId, fetchConfig, hasFetched]);
 
   async function handleSave() {
     if (!phoneNumberId.trim()) {
